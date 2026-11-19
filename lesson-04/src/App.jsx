@@ -2,12 +2,13 @@ import { useState } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import MovieList from "./components/MovieList.jsx";
-import { movies } from "./data/movies.js";
+import { movies } from "../data/movies.js";
 
 function App() {
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [visibleCount, setVisibleCount] = useState(4);
+  const [ratings, setRatings] = useState({});
 
   const topRated = movies.filter(movie => movie.rating >= 8.7);
 
@@ -24,7 +25,13 @@ function App() {
   }
 
   const visibleMovies = shownMovies.slice(0, visibleCount);
-
+  
+function handleRate(id, star) {
+  setRatings(prev => ({
+    ...prev,
+    [id]: prev[id] === star ? 0 : star
+  }));
+}
   function toggleAvailable() {
     setOnlyAvailable(!onlyAvailable);
   }

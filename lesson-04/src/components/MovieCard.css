@@ -98,3 +98,17 @@
 .movie-card__like:hover {
   background: var(--surface);
 }
+.my-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.my-rating button {
+  color: var(--gold);
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
